@@ -1,0 +1,39 @@
+<?php
+
+
+add_action( 'init', 'custom_reviews_register_post_type' );
+function custom_reviews_register_post_type() {
+    $labels = array(
+        'name'               => 'Reviews',
+        'singular_name'      => 'Review',
+        'menu_name'          => 'Reviews',
+        'add_new'            => 'Add New',
+        'add_new_item'       => 'Add New Review',
+        'edit_item'          => 'Edit Review',
+        'new_item'           => 'New Review',
+        'view_item'          => 'View Review',
+        'view_items'         => 'View Reviews',
+        'search_items'       => 'Search Reviews',
+        'not_found'          => 'No reviews found',
+        'not_found_in_trash' => 'No reviews found in trash',
+        'parent_item_colon'  => 'Parent Review:',
+    );
+
+    $args = array(
+        'labels'              => $labels,
+        'public'              => true,
+        'has_archive'         => false,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'menu_icon'           => 'dashicons-star-filled', // Customize with 
+        'supports'            => array( 'title', 'editor' ), //
+        'capability_type'     => 'post',
+        'rewrite'             => array( 'slug' => 'reviews' ),
+    );
+
+    register_post_type( 'reviews', $args );
+}
+
+
+?>

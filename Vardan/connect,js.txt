@@ -1,0 +1,38 @@
+<script>
+
+jQuery(document).ready(function($) {
+    $('#review-form').on('submit', function(e) {
+        e.preventDefault();
+
+        var formData = $(this).serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: custom_reviews_ajax_object.ajax_url,
+            data: {
+                action: 'custom_reviews_submit_review',
+                nonce: custom_reviews_ajax_object.nonce,
+                formData: formData
+            },
+            success: function(response) {
+                $('#response-message').html(response);
+                $('#review-form')[0].reset();
+            },
+            error: function(errorThrown) {
+                console.error(errorThrown);
+            }
+        });
+    });
+});
+
+
+</script>
+
+<p style="color: green">
+The content above was created with JavaScript.<br>
+This content is created with <b>HTML</b>.<br>
+You can edit JavaScript and HTML in the left part of the page
+and click "<b>Run code</b>" to view results in the right part of the page.
+</p>
+<b>LESSON 4: CALL A JAVASCRIPT FUNCTION:</b>
+<input type=button onClick="show_random_number()" value="Generate random number">
